@@ -3,110 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منشئ السيرة الذاتية (ATS)</title>
+    <title>منشئ السيرة الذاتية (ATS) - 10 قوالب احترافية</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; display: flex; height: 100vh; background-color: #f4f7f6; color: #333; overflow: hidden;}
+        /* إعدادات عامة */
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; display: flex; height: 100vh; background-color: #f4f7f6; color: #333; }
+        
+        /* لوحة التعديل */
         .editor-panel { width: 45%; padding: 25px; background-color: #ffffff; box-shadow: -2px 0 10px rgba(0,0,0,0.1); overflow-y: auto; }
         .editor-panel h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
         .section-title { font-size: 18px; color: #34495e; margin-top: 25px; margin-bottom: 15px; font-weight: bold; }
+        
         .form-row { display: flex; gap: 15px; margin-bottom: 12px; }
         .form-row .form-group { flex: 1; margin-bottom: 0; }
+        
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 13px; color: #555; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; box-sizing: border-box; }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #3498db; outline: none; }
+        
         .dynamic-box { border: 1px dashed #bdc3c7; padding: 15px; margin-bottom: 15px; border-radius: 5px; position: relative; background: #fafafa;}
         .remove-btn { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; font-size: 12px; }
         .add-btn { background: #3498db; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; font-size: 13px; margin-bottom: 20px; }
-        .btn-download { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 30px; margin-bottom: 50px;}
+        
+        .btn-download { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 30px; }
         .btn-download:hover { background-color: #27ae60; }
+
+        /* لوحة المعاينة */
         .preview-panel { width: 55%; padding: 30px; display: flex; justify-content: center; align-items: flex-start; overflow-y: auto; background-color: #e0e6ed; }
         
-        /* قوالب الـ ATS */
-        .resume-page { width: 210mm; min-height: 297mm; background: white; padding: 20mm; box-shadow: 0 0 10px rgba(0,0,0,0.2); box-sizing: border-box; }
+        /* ---------------- الأساسيات الثابتة للـ ATS ---------------- */
+        .resume-page { width: 210mm; min-height: 297mm; background: white; padding: 20mm; box-shadow: 0 0 10px rgba(0,0,0,0.2); box-sizing: border-box; transition: all 0.3s ease; }
         .item-row { margin-bottom: 12px; }
         .item-header { display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; }
         .item-sub { font-style: italic; font-size: 13px; margin-bottom: 4px; color: #555; }
         .item-desc { font-size: 13px; margin: 0; line-height: 1.5; }
         .skills-list { font-size: 13px; line-height: 1.6; margin: 0; padding: 0 20px; }
 
+        /* ================= 10 قوالب ATS ================= */
+
+        /* 1. الكلاسيكي */
         .t-classic { font-family: 'Times New Roman', Times, serif; color: #000; }
-        .t-classic h1 { text-align: center; font-size: 26px; border-bottom: 2px solid #000; margin:0 0 10px 0; padding-bottom: 10px; }
+        .t-classic h1 { text-align: center; font-size: 26px; text-transform: uppercase; border-bottom: 2px solid #000; margin:0 0 10px 0; padding-bottom: 10px; }
         .t-classic .contact-info { text-align: center; font-size: 14px; margin-bottom: 20px; }
-        .t-classic .resume-section h3 { font-size: 16px; border-bottom: 1px solid #000; padding-bottom: 3px; margin-bottom: 10px; }
+        .t-classic .resume-section h3 { font-size: 16px; text-transform: uppercase; border-bottom: 1px solid #000; padding-bottom: 3px; margin-bottom: 10px; }
         
+        /* 2. الحديث */
         .t-modern { font-family: 'Segoe UI', Arial, sans-serif; color: #333; }
-        .t-modern h1 { font-size: 28px; margin: 0; color: #2c3e50; font-weight: 800; }
-        .t-modern .contact-info { font-size: 13px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #3498db; color: #7f8c8d; }
-        .t-modern .resume-section h3 { font-size: 15px; color: #2980b9; border-bottom: 1px solid #ecf0f1; padding-bottom: 5px; margin-bottom: 12px; }
+        .t-modern h1 { text-align: left; font-size: 28px; margin: 0; color: #2c3e50; font-weight: 800; }
+        .t-modern .contact-info { text-align: left; font-size: 13px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #3498db; color: #7f8c8d; }
+        .t-modern .resume-section h3 { font-size: 15px; color: #2980b9; text-transform: uppercase; border-bottom: 1px solid #ecf0f1; padding-bottom: 5px; margin-bottom: 12px; }
+        
+        /* 3. البسيط */
+        .t-minimal { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #444; }
+        .t-minimal h1 { text-align: center; font-size: 22px; margin: 0 0 5px 0; font-weight: normal; letter-spacing: 2px; }
+        .t-minimal .contact-info { text-align: center; font-size: 12px; margin-bottom: 30px; color: #888; }
+        .t-minimal .resume-section h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #000; margin-bottom: 15px; }
 
+        /* 4. التنفيذي */
         .t-executive { font-family: Georgia, serif; color: #222; }
-        .t-executive h1 { font-size: 30px; margin: 0 0 10px 0; color: #34495e; }
-        .t-executive .contact-info { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; margin-bottom: 20px; font-size: 13px; }
-        .t-executive .resume-section h3 { background-color: #f1f2f6; padding: 5px 10px; font-size: 14px; margin-bottom: 15px; color: #2f3640; }
+        .t-executive h1 { text-align: left; font-size: 30px; margin: 0 0 10px 0; color: #34495e; }
+        .t-executive .contact-info { text-align: left; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; margin-bottom: 20px; font-size: 13px; }
+        .t-executive .resume-section h3 { background-color: #f1f2f6; padding: 5px 10px; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; color: #2f3640; }
 
+        /* 5. الإبداعي */
+        .t-creative { font-family: 'Trebuchet MS', sans-serif; color: #333; }
+        .t-creative h1 { text-align: left; font-size: 28px; margin: 0 0 5px 0; color: #8e44ad; }
+        .t-creative .contact-info { text-align: left; font-size: 13px; margin-bottom: 25px; color: #7f8c8d; }
+        .t-creative .resume-section h3 { font-size: 15px; color: #8e44ad; border-left: 4px solid #8e44ad; padding-left: 8px; margin-bottom: 15px; text-transform: uppercase; }
+
+        /* 6. التقني */
+        .t-tech { font-family: 'Courier New', Courier, monospace; color: #111; }
+        .t-tech h1 { text-align: left; font-size: 26px; margin: 0 0 5px 0; color: #27ae60; font-weight: bold; }
+        .t-tech .contact-info { text-align: left; font-size: 13px; margin-bottom: 20px; border-bottom: 1px dashed #27ae60; padding-bottom: 10px; }
+        .t-tech .resume-section h3 { font-size: 15px; border-bottom: 1px dashed #333; padding-bottom: 5px; margin-bottom: 15px; font-weight: bold; }
+
+        /* 7. الأنيق */
+        .t-elegant { font-family: 'Palatino Linotype', 'Book Antiqua', serif; color: #2c3e50; }
+        .t-elegant h1 { text-align: center; font-size: 28px; margin: 0 0 5px 0; color: #c0392b; }
+        .t-elegant .contact-info { text-align: center; font-size: 13px; margin-bottom: 25px; }
+        .t-elegant .resume-section h3 { font-size: 16px; font-style: italic; color: #c0392b; border-bottom: 1px solid #c0392b; padding-bottom: 3px; margin-bottom: 15px; }
+
+        /* 8. الداكن */
+        .t-bold { font-family: Arial, sans-serif; color: #000; }
+        .t-bold h1 { text-align: left; font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: -1px; }
+        .t-bold .contact-info { text-align: left; font-size: 14px; margin-bottom: 25px; font-weight: bold; }
+        .t-bold .resume-section h3 { background: #000; color: #fff; padding: 4px 8px; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+
+        /* 9. الأكاديمي */
+        .t-academic { font-family: 'Times New Roman', Times, serif; color: #000; line-height: 1.2; }
+        .t-academic h1 { text-align: center; font-size: 20px; font-weight: bold; margin: 0 0 5px 0; }
+        .t-academic .contact-info { text-align: center; font-size: 12px; margin-bottom: 15px; }
+        .t-academic .resume-section h3 { font-size: 14px; font-weight: bold; text-decoration: underline; text-transform: uppercase; margin-bottom: 10px; }
+        .t-academic .item-row { margin-bottom: 8px; }
+
+        /* 10. الناشئ (Startup) */
+        .t-startup { font-family: Verdana, sans-serif; color: #333; }
+        .t-startup h1 { text-align: left; font-size: 26px; margin: 0 0 5px 0; color: #e67e22; }
+        .t-startup .contact-info { text-align: left; font-size: 12px; margin-bottom: 20px; color: #95a5a6; }
+        .t-startup .resume-section h3 { font-size: 14px; color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 3px; margin-bottom: 15px; }
+
+        /* --- دعم اللغة العربية (محاذاة اليمين) لجميع القوالب --- */
+        .resume-page[dir="rtl"].t-modern h1, .resume-page[dir="rtl"].t-modern .contact-info,
+        .resume-page[dir="rtl"].t-executive h1, .resume-page[dir="rtl"].t-executive .contact-info,
+        .resume-page[dir="rtl"].t-creative h1, .resume-page[dir="rtl"].t-creative .contact-info,
+        .resume-page[dir="rtl"].t-tech h1, .resume-page[dir="rtl"].t-tech .contact-info,
+        .resume-page[dir="rtl"].t-bold h1, .resume-page[dir="rtl"].t-bold .contact-info,
+        .resume-page[dir="rtl"].t-startup h1, .resume-page[dir="rtl"].t-startup .contact-info { text-align: right; }
+        
+        .resume-page[dir="rtl"].t-creative .resume-section h3 { border-left: none; border-right: 4px solid #8e44ad; padding-left: 0; padding-right: 8px; }
+
+        /* إعدادات الطباعة (PDF) */
         @media print {
-            body { background: white; display: block; margin: 0; overflow: visible;}
-            .editor-panel { display: none !important; }
+            @page { margin: 0; }
+            body { background: white; display: block; margin: 0; }
+            .editor-panel { display: none; }
             .preview-panel { width: 100%; padding: 0; background: white; display: block; }
-            .resume-page { box-shadow: none; width: 100%; padding: 20mm; }
+            .resume-page { box-shadow: none; width: 100%; padding: 20mm; min-height: auto; }
         }
     </style>
 </head>
 <body>
 
+    <!-- الجانب الأيمن: إدخال البيانات -->
     <div class="editor-panel" oninput="updatePreview()" onchange="updatePreview()">
         <h2>إعدادات السيرة الذاتية</h2>
         
         <div class="form-row">
             <div class="form-group">
-                <label>اختر القالب</label>
+                <label>اختر القالب (Template)</label>
                 <select id="cv-template">
                     <option value="t-classic">1. الكلاسيكي (Classic)</option>
                     <option value="t-modern">2. الحديث (Modern)</option>
-                    <option value="t-executive">3. التنفيذي (Executive)</option>
+                    <option value="t-minimal">3. البسيط (Minimalist)</option>
+                    <option value="t-executive">4. التنفيذي (Executive)</option>
+                    <option value="t-creative">5. الإبداعي (Creative)</option>
+                    <option value="t-tech">6. التقني (Tech)</option>
+                    <option value="t-elegant">7. الأنيق (Elegant)</option>
+                    <option value="t-bold">8. الداكن (Bold)</option>
+                    <option value="t-academic">9. الأكاديمي (Academic)</option>
+                    <option value="t-startup">10. الناشئ (Startup)</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>اللغة</label>
+                <label>لغة السيرة (Language)</label>
                 <select id="cv-language">
-                    <option value="en">English</option>
-                    <option value="ar">العربية</option>
+                    <option value="en">English (إنجليزي)</option>
+                    <option value="ar">العربية (Arabic)</option>
                 </select>
             </div>
         </div>
 
         <div class="section-title">المعلومات الشخصية</div>
-        <div class="form-group"><input type="text" id="inp-name" placeholder="الاسم الكامل"></div>
-        <div class="form-group"><input type="text" id="inp-title" placeholder="المسمى الوظيفي"></div>
-        <div class="form-group"><input type="text" id="inp-contact" placeholder="البريد | الهاتف | المدينه"></div>
-        <div class="form-group"><textarea id="inp-summary" rows="3" placeholder="الملخص المهني"></textarea></div>
+        <div class="form-group"><input type="text" id="inp-name" placeholder="Full Name (الاسم الكامل)"></div>
+        <div class="form-group"><input type="text" id="inp-title" placeholder="Job Title (المسمى الوظيفي)"></div>
+        <div class="form-group"><input type="text" id="inp-contact" placeholder="Email | Phone | Location"></div>
+        <div class="form-group"><textarea id="inp-summary" rows="3" placeholder="Professional Summary (الملخص المهني)"></textarea></div>
 
-        <div class="section-title">خبرات العمل</div>
+        <div class="section-title">خبرات العمل (Work Experience)</div>
         <div id="jobs-container"></div>
-        <button class="add-btn" onclick="addJob()">+ إضافة خبرة</button>
+        <button class="add-btn" onclick="addJob()">+ إضافة خبرة عمل</button>
 
-        <div class="section-title">التعليم</div>
+        <div class="section-title">التعليم (Education)</div>
         <div id="edu-container"></div>
         <button class="add-btn" onclick="addEdu()">+ إضافة تعليم</button>
 
-        <div class="section-title">المهارات</div>
+        <div class="section-title">المهارات (Skills)</div>
         <div class="form-group"><textarea id="inp-skills" rows="3" placeholder="أدخل المهارات مفصولة بفاصلة"></textarea></div>
 
-        <button class="btn-download" onclick="window.print()">حفظ كملف PDF</button>
+        <button class="btn-download" onclick="window.print()">حفظ كملف PDF (ATS متوافق)</button>
     </div>
 
+    <!-- الجانب الأيسر: المعاينة -->
     <div class="preview-panel">
-        <div class="resume-page t-classic" id="cv-preview"></div>
+        <div class="resume-page t-classic" id="cv-preview">
+            <!-- سيتم توليد المحتوى هنا -->
+        </div>
     </div>
 
     <script>
         function getJobHTML(id) {
-            return `<div class="dynamic-box job-entry" id="job-${id}"><button class="remove-btn" onclick="removeEl('job-${id}')">حذف</button><div class="form-group"><input type="text" class="j-title" placeholder="المسمى"></div><div class="form-group"><input type="text" class="j-company" placeholder="الشركة"></div><div class="form-group"><input type="text" class="j-date" placeholder="التاريخ"></div><div class="form-group"><textarea class="j-desc" rows="2" placeholder="المهام..."></textarea></div></div>`;
+            return `
+                <div class="dynamic-box job-entry" id="job-${id}">
+                    <button class="remove-btn" onclick="removeEl('job-${id}')">حذف</button>
+                    <div class="form-group"><input type="text" class="j-title" placeholder="Job Title / المسمى"></div>
+                    <div class="form-group"><input type="text" class="j-company" placeholder="Company / الشركة"></div>
+                    <div class="form-group"><input type="text" class="j-date" placeholder="Dates / التاريخ"></div>
+                    <div class="form-group"><textarea class="j-desc" rows="2" placeholder="Responsibilities / المهام..."></textarea></div>
+                </div>`;
         }
+
         function getEduHTML(id) {
-            return `<div class="dynamic-box edu-entry" id="edu-${id}"><button class="remove-btn" onclick="removeEl('edu-${id}')">حذف</button><div class="form-group"><input type="text" class="e-degree" placeholder="الدرجة"></div><div class="form-group"><input type="text" class="e-school" placeholder="الجامعة"></div><div class="form-group"><input type="text" class="e-date" placeholder="السنة"></div></div>`;
+            return `
+                <div class="dynamic-box edu-entry" id="edu-${id}">
+                    <button class="remove-btn" onclick="removeEl('edu-${id}')">حذف</button>
+                    <div class="form-group"><input type="text" class="e-degree" placeholder="Degree / الدرجة"></div>
+                    <div class="form-group"><input type="text" class="e-school" placeholder="Institution / الجامعة"></div>
+                    <div class="form-group"><input type="text" class="e-date" placeholder="Year / السنة"></div>
+                </div>`;
         }
+
         let jobId = 0, eduId = 0;
         function addJob() { document.getElementById('jobs-container').insertAdjacentHTML('beforeend', getJobHTML(jobId++)); updatePreview(); }
         function addEdu() { document.getElementById('edu-container').insertAdjacentHTML('beforeend', getEduHTML(eduId++)); updatePreview(); }
@@ -116,39 +211,69 @@
             const lang = document.getElementById('cv-language').value;
             const template = document.getElementById('cv-template').value;
             const isAr = (lang === 'ar');
+            
             const cvPage = document.getElementById('cv-preview');
             cvPage.setAttribute('dir', isAr ? 'rtl' : 'ltr');
             cvPage.className = `resume-page ${template}`;
 
-            const name = document.getElementById('inp-name').value || 'الاسم الكامل';
-            const title = document.getElementById('inp-title').value || 'المسمى الوظيفي';
-            const contact = document.getElementById('inp-contact').value || 'البريد | الهاتف | المدينة';
-            const summary = document.getElementById('inp-summary').value || 'ملخص مهني يبرز أهم مهاراتك.';
+            const tSummary = isAr ? 'الملخص المهني' : 'Professional Summary';
+            const tExperience = isAr ? 'الخبرات المهنية' : 'Work Experience';
+            const tEducation = isAr ? 'التعليم' : 'Education';
+            const tSkills = isAr ? 'المهارات' : 'Skills';
+
+            const name = document.getElementById('inp-name').value || (isAr ? 'الاسم الكامل' : 'YOUR NAME');
+            const title = document.getElementById('inp-title').value || (isAr ? 'المسمى الوظيفي' : 'Target Job Title');
+            const contact = document.getElementById('inp-contact').value || (isAr ? 'البريد الإلكتروني | رقم الجوال | المدينة' : 'email@example.com | +123456789 | City, Country');
+            const summary = document.getElementById('inp-summary').value || (isAr ? 'ملخص مهني يبرز أهم مهاراتك.' : 'Professional summary describing your key skills.');
             
-            let jobsHTML = '', eduHTML = '';
+            let jobsHTML = '';
             document.querySelectorAll('.job-entry').forEach(job => {
-                jobsHTML += `<div class="item-row"><div class="item-header"><span>${job.querySelector('.j-title').value || 'المسمى'}</span><span>${job.querySelector('.j-date').value || 'التاريخ'}</span></div><div class="item-sub">${job.querySelector('.j-company').value || 'الشركة'}</div><p class="item-desc">${job.querySelector('.j-desc').value.replace(/\n/g, '<br>') || 'المهام...'}</p></div>`;
-            });
-            document.querySelectorAll('.edu-entry').forEach(edu => {
-                eduHTML += `<div class="item-row"><div class="item-header"><span>${edu.querySelector('.e-degree').value || 'الدرجة'}</span><span>${edu.querySelector('.e-date').value || 'السنة'}</span></div><div class="item-sub">${edu.querySelector('.e-school').value || 'الجامعة'}</div></div>`;
+                jobsHTML += `
+                    <div class="item-row">
+                        <div class="item-header">
+                            <span>${job.querySelector('.j-title').value || (isAr ? 'المسمى الوظيفي' : 'Job Title')}</span>
+                            <span>${job.querySelector('.j-date').value || (isAr ? 'التاريخ' : 'Date')}</span>
+                        </div>
+                        <div class="item-sub">${job.querySelector('.j-company').value || (isAr ? 'اسم الشركة' : 'Company Name')}</div>
+                        <p class="item-desc">${job.querySelector('.j-desc').value.replace(/\n/g, '<br>') || (isAr ? 'وصف المسؤوليات والإنجازات.' : 'Description of responsibilities.')}</p>
+                    </div>`;
             });
 
-            let htmlContent = `<h1>${name}</h1><div class="contact-info">${contact}<br><b>${title}</b></div><div class="resume-section"><h3>الملخص</h3><p class="item-desc">${summary}</p></div>`;
-            if (jobsHTML) htmlContent += `<div class="resume-section"><h3>الخبرات</h3>${jobsHTML}</div>`;
-            if (eduHTML) htmlContent += `<div class="resume-section"><h3>التعليم</h3>${eduHTML}</div>`;
-            
+            let eduHTML = '';
+            document.querySelectorAll('.edu-entry').forEach(edu => {
+                eduHTML += `
+                    <div class="item-row">
+                        <div class="item-header">
+                            <span>${edu.querySelector('.e-degree').value || (isAr ? 'الدرجة العلمية' : 'Degree Name')}</span>
+                            <span>${edu.querySelector('.e-date').value || (isAr ? 'السنة' : 'Year')}</span>
+                        </div>
+                        <div class="item-sub">${edu.querySelector('.e-school').value || (isAr ? 'اسم الجامعة' : 'Institution Name')}</div>
+                    </div>`;
+            });
+
             const skillsRaw = document.getElementById('inp-skills').value;
             let skillsHTML = '';
             if (skillsRaw) {
                 const skillsArray = skillsRaw.split(',').map(s => s.trim()).filter(s => s !== '');
                 skillsHTML = `<ul class="skills-list">` + skillsArray.map(s => `<li>${s}</li>`).join('') + `</ul>`;
             } else {
-                skillsHTML = `<ul class="skills-list"><li>مهارة 1</li><li>مهارة 2</li></ul>`;
+                skillsHTML = `<ul class="skills-list"><li>${isAr ? 'مهارة 1' : 'Skill 1'}</li><li>${isAr ? 'مهارة 2' : 'Skill 2'}</li></ul>`;
             }
-            htmlContent += `<div class="resume-section"><h3>المهارات</h3>${skillsHTML}</div>`;
+
+            let htmlContent = `
+                <h1>${name}</h1>
+                <div class="contact-info">${contact}<br><b>${title}</b></div>
+                <div class="resume-section"><h3>${tSummary}</h3><p class="item-desc">${summary}</p></div>
+            `;
+            if (jobsHTML) htmlContent += `<div class="resume-section"><h3>${tExperience}</h3>${jobsHTML}</div>`;
+            if (eduHTML) htmlContent += `<div class="resume-section"><h3>${tEducation}</h3>${eduHTML}</div>`;
+            htmlContent += `<div class="resume-section"><h3>${tSkills}</h3>${skillsHTML}</div>`;
+            
             cvPage.innerHTML = htmlContent;
         }
-        addJob(); addEdu();
+
+        addJob();
+        addEdu();
     </script>
 </body>
 </html>
