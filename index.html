@@ -174,7 +174,7 @@
         </div>
     </div>
 
-    <!-- ================= واجهة الدردشة الذكية החقيقية ================= -->
+    <!-- ================= واجهة الدردشة الذكية ================= -->
     <div class="chat-widget-btn" onclick="toggleChat()">🤖</div>
     
     <div class="chat-box" id="chat-box">
@@ -242,7 +242,7 @@
         }
         addJob(); addEdu();
 
-        // ================= محرك الذكاء الاصطناعي (المتصل بالخادم الآمن) =================
+        // ================= محرك الذكاء الاصطناعي (المحدث لكشف الأخطاء) =================
         const chatBox = document.getElementById('chat-box');
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
@@ -275,7 +275,6 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // هنا السحر الجديد: الاتصال بملف chat.js الموجود في الخادم
         async function fetchAIResponse(userText) {
             try {
                 const response = await fetch("/api/chat", {
@@ -286,16 +285,18 @@
                     body: JSON.stringify({ message: userText })
                 });
 
+                const data = await response.json();
+
+                // طباعة الخطأ الحقيقي القادم من الخادم مباشرة في الدردشة
                 if (!response.ok) {
-                    throw new Error("Server Error");
+                    return "خطأ من الخادم: " + (data.reply || data.error || "استجابة غير صالحة");
                 }
 
-                const data = await response.json();
                 return data.reply; 
 
             } catch (error) {
                 console.error(error);
-                return "عذراً، حدث خطأ أثناء الاتصال بالخادم. سيتم تفعيل الذكاء الاصطناعي بمجرد رفع الموقع على Vercel بنجاح.";
+                return "خطأ في الشبكة: لم يتم العثور على مسار /api/chat (تأكد أن مجلد api يقع في الجذر الرئيسي بمستودع GitHub).";
             }
         }
     </script>
