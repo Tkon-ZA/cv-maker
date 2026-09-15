@@ -1,45 +1,37 @@
 export default async function handler(req, res) {
-    // السماح بالطلبات فقط
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
     try {
         const { message } = req.body;
-        const apiKey = process.env.OPENAI_API_KEY;
+        const text = message ? message.toLowerCase() : "";
 
-        if (!apiKey) {
-            return res.status(500).json({ reply: 'خطأ: مفتاح الـ API غير موجود في إعدادات الخادم.' });
+        let replyText = "";
+
+        // محرك ذكاء اصطناعي محلي مجاني ومدمج بالخادم
+        if (text.includes('ملخص') || text.includes('summary')) {
+            replyText = "الملخص المهني يجب أن يكون في 3-4 أسطر ويوضح خبرتك وقيمتك للشركة. هل تريدني أن أعطيك قالباً جاهزاً لتخصص معين (مثل: مبرمج، محاسب، إداري)؟";
+        } 
+        else if (text.includes('مبرمج') || text.includes('تقني') || text.includes('برمجة')) {
+            replyText = "تفضل هذا الملخص الجاهز للمبرمجين:\n\n'مهندس برمجيات ومطور واجهات ذو خبرة تزيد عن 3 سنوات في بناء التطبيقات وتصميم الأنظمة باستخدام أحدث التقنيات. أمتلك سجلاً حافلاً في تحسين الأداء وحل المشكلات البرمجية المعقدة.'\n\nقم بنسخه وتعديله بما يناسبك!";
+        }
+        else if (text.includes('ats') || text.includes('أنظمة')) {
+            replyText = "أنظمة الـ ATS تعتمد على الكلمات المفتاحية البسيطة. تجنب الجداول المعقدة، الصور، أو الأعمدة الجانبية، واستخدم الخطوط القياسية واحرص على تطابق كلمات الوظيفة مع سيرتك الذاتية.";
+        }
+        else if (text.includes('مهارات') || text.includes('skills')) {
+            replyText = "اقسم مهاراتك إلى قسمين: مهارات تقنية (Hard Skills) مثل اللغات والأدوات، ومهارات شخصية (Soft Skills) مثل العمل الجماعي وحل المشكلات.";
+        }
+        else if (text.includes('مرحبا') || text.includes('هلا') || text.includes('السلام')) {
+            replyText = "أهلاً بك! أنا مساعدك الذكي المجاني لإنشاء سير ذاتية تنافسية ومتوافقة مع الـ ATS. كيف يمكنني مساعدتك اليوم؟";
+        }
+        else {
+            replyText = "سؤال ممتاز! لتعزيز سيرتك الذاتية، احرص دائماً على كتابة الإنجازات بلغة الأرقام (مثل: إنجاز المشاريع قبل الموعد بنسبة 15%) بدلاً من سرد المهام الروتينية.";
         }
 
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [
-                    { 
-                        role: "system", 
-                        content: "أنت خبير محترف في الموارد البشرية وكتابة السير الذاتية المتوافقة مع أنظمة ATS. ساعد المستخدم في كتابة ملخصات مهنية وتقديم نصائح توظيفية باللغة العربية." 
-                    },
-                    { role: "user", content: message }
-                ]
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.error) {
-            return res.status(400).json({ reply: "خطأ من OpenAI: " + data.error.message });
-        }
-
-        const replyText = data.choices[0].message.content;
         return res.status(200).json({ reply: replyText });
 
     } catch (error) {
-        return res.status(500).json({ reply: 'حدث خطأ تقني أثناء الاتصال بالخادم الداخلي.' });
+        return res.status(500).json({ reply: 'حدث خطأ داخلي في الخادم.' });
     }
 }
